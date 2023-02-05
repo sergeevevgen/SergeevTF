@@ -40,7 +40,7 @@ public class FilmService {
                 final Request original = chain.request();
                 final HttpUrl originalHttpUrl = original.url();
                 final HttpUrl url = originalHttpUrl.newBuilder()
-                        //.addQueryParameter("X-API-KEY", KEY)
+                        .addQueryParameter("X-API-KEY", KEY)
                         .build();
                 final Request.Builder requestBuilder = original.newBuilder()
                         .url(url);

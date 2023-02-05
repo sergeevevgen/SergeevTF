@@ -89,14 +89,13 @@ public class PopularFragment extends Fragment {
         disposable.add(app.getFilmService().getApi().getFilms()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BiConsumer<Body, Throwable>() {
+                .subscribe(new BiConsumer<List<Film>, Throwable>() {
                     @Override
-                    public void accept(Body body, Throwable throwable) throws Exception {
+                    public void accept(List<Film> films, Throwable throwable) throws Exception {
                         if (throwable != null) {
                             Toast.makeText(getContext(), "Нет подключения к сети", Toast.LENGTH_SHORT).show();
                         } else {
-                            films = (ArrayList<Film>) body.getFilms();
-                            adapter.setData(films);
+                            adapter.setData((ArrayList<Film>) films);
                         }
                     }
                 }));

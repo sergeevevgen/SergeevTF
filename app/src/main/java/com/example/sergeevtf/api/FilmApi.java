@@ -16,17 +16,17 @@ public interface FilmApi {
     String type = "TOP_100_POPULAR_FILMS";
     String KEY = "e30ffed0-76ab-4dd6-b41f-4c9da2b2735b";
 
-    @Headers({
-            "accept: application/json",
-            "X-API-KEY: " + KEY
-    })
+//    @Headers({
+//            "accept: application/json",
+//            "X-API-KEY: " + KEY
+//    })
     @GET("films/top?type=" + type + "&page=1")
-    Single<Body> getFilms();
+    Single<List<Film>> getFilms();
 
-    @Headers({
-            "accept: application/json",
-            "X-API-KEY: " + KEY
-    })
+//    @Headers({
+//            "accept: application/json",
+//            "X-API-KEY: " + KEY
+//    })
     @GET("films/{id}")
     Single<Film> getFilm(@Path("id") Integer film);
 }
